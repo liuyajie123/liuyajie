@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul li{
+            float: left;
+        }
+        h6{
+            clear: both;
+            padding-top:15px;
+            font-size: 18px;
+            font-weight: 900;
+            color: #66b8da;
+            padding-bottom:8px;
+            border-bottom: 1px solid #ccc;
+        }
+        h5{
+            font-size: 24px;
+            width: 100px;
+            border-bottom: 3px solid orange;
+        }
+        ol{
+            width: 380px;;
+            margin: 0 auto;
+        }
+        ol li{
+            float: left;
+            width: 25px;
+            height: 25px;
+            border:1px solid #b4005a;
+            text-align: center;
+            line-height: 25px;
+            margin:5px;
+            cursor: pointer;
+        }
+        .no{
+            background:red ;
+        }
+        .n {
+            width:50px;
+        }
+        i{
+            font-style: normal;
+        }
+
+        .ale{
+            width: 350px;
+            height: 400px;
+            background:#99cfe7;
+            position: absolute;
+            left: 300px;
+            top:100px;
+        }
+
+        .ale li{
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ale" ng-show="turn">
+    <ul>
+        <li>登陆名:<input type="text" ng-model="dname"></li>
+        <li>真实姓名:<input type="text" ng-model="name"></li>
+        <li>角色:<input type="text" ng-model="jss"></li>
+        <li>手机:<input type="text" ng-model="tel"></li>
+        <li>邮箱:<input type="text" ng-model="yx"></li>
+        <li>状态:<input type="text" ng-model="zt"></li>
+        <li>
+            <button ng-click="que()">确认</button>
+            <button ng-click="qu()">取消</button>
+        </li>
+    </ul>
+
+</div>
+<h5>用户管理</h5>
+<ul>
+    <li>
+        <span>角色:</span>
+        <select ng-model="role">
+            <option value="管理员">管理员</option>
+            <option value="13管理员aaa">13管理员aaa</option>
+        </select>
+    </li>
+    <li>
+        <span>状态</span>
+        <select ng-model="state">
+            <option value="启用">启用</option>
+            <option value="禁用">禁用</option>
+        </select>
+    </li>
+    <li>
+        <span>登录名</span>
+        <input type="text">
+        <button ng-click="search()" ng-model="search">查询</button>
+    </li>
+</ul>
+
+<h6>列表</h6>
+<table class="table">
+    <thead>
+        <td>ID</td>
+        <td>登录名</td>
+        <td>真实姓名</td>
+        <td>角色</td>
+        <td>手机</td>
+        <td>邮箱</td>
+        <td>状态</td>
+        <td>创建时间</td>
+    </thead>
+
+     <tr ng-repeat="item in data | limitTo:1 ">
+        <td>{{item.ID}}</td>
+        <td>{{item.parentid}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.role}}</td>
+        <td>{{item.telephone}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.state}}</td>
+        <td>{{item.creattime}}</td>
+         <td>
+             <a ng-click="ot()">修改</a>
+             <a>删除</a>
+         </td>
+    </tr>
+</table>
+<ol class="ol-one">
+    <li ng-click="minus()"><</li>
+    <li ng-repeat="item in number " ng-click="fn($index)" ng-class="{no:$index==no}">{{item}} </li>
+    <li ng-click="add()"> > </li>
+</ol>
+<!--<span>
+     <i>转到:</i>
+    <input type="number" class="n" max="8" min="1" value="1" ng-model="mo">
+    <button ng-click="yes()">确认</button>
+</span>-->
+
+
+</body>
+</html>
