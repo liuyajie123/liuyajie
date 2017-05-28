@@ -1,0 +1,91 @@
+
+<div class="main page">
+    <h2>角色管理</h2>
+
+    <div class="sel">
+        <span>角色</span>
+        <select ng-model="mange">
+            <option value="">全部</option>
+            <option value="管理员">管理员</option>
+            <option value="观众">观众</option>
+        </select>
+        <span>状态</span>
+        <select ng-model="status">
+            <option value="">全部</option>
+            <option value="启用">启用</option>
+            <option value="禁用">禁用</option>
+        </select>
+        <span>登录名</span>
+        <input type="text" ng-model="put">
+        <button ng-click="search()">查询</button>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>登陆名</td>
+            <td>真实姓名</td>
+            <td>角色</td>
+            <td>手机</td>
+            <td>邮箱</td>
+            <td>状态</td>
+            <td>创建时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in bt |limitTo:num">
+            <td>{{item.id}}</td>
+            <td>{{item.user}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.role}}</td>
+            <td>{{item.tel}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.state}}</td>
+            <td>{{item.time}}</td>
+            <td><i class="evt" ng-click="bian(item.id)">编辑</i> | <i class="evt" ng-click="remove(item.id)">删除</i></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pages" ng-show="cutPage">
+        <span ng-click="ye('-')">上一页</span>
+        <a ng-show="firstPage" ng-class="{showw:(index+1)==1}" ng-click="changeIndexFn(1)">1</a>
+        <a ng-show="showone">...</a>
+        <a ng-class="{showw:(index+1)==num}" ng-show="showArr.indexOf(num)!=-1" ng-repeat="num in mov"
+           ng-click="changeIndexFn(num)">{{num}}</a>
+        <a ng-show="showtwo">...</a>
+        <a ng-show="lastPage" ng-class="{showw:(index+1)==li}" ng-click="changeIndexFn(li)">{{li}}</a>
+        <span ng-click="ye('+')">下一页</span>
+        <!--第 <input type="text" id="ipt" class="ipt" ng-model="nam"> 页-->
+    </div>
+
+    <div class="shade" ng-show="las">
+        <ul>
+            <li><span>登录名：</span><input type="text" value="{{fix.user}}" ng-model="fix.user"></li>
+            <li><span>真实姓名：</span><input type="text" value="{{fix.name}}" ng-model="fix.name"></li>
+            <li><span>角色：</span><select ng-model="fix.role">
+                <option value="">全部</option>
+                <option value="管理员">管理员</option>
+                <option value="观众">观众</option>
+            </select>
+            </li>
+            <li><span>手机：</span><input type="text" value="{{fix.tel}}" ng-model="fix.tel"></li>
+            <li><span>邮箱：</span><input type="text" value="{{fix.email}}" ng-model="fix.email"></li>
+            <li><span>状态：</span>
+                <input type="radio" name="state" id="radone" value="启用" ng-model="fix.state"><label
+                        for="radone">启用</label>
+                <input type="radio" name="state" id="radtwo" value="禁用" ng-model="fix.state"><label
+                        for="radtwo">禁用</label>
+            </li>
+
+            <!--<radio-event></radio-event>-->
+
+            <li>
+                <button class="ton" ng-click="ding()">确定</button>
+                <button ng-click="close()">取消</button>
+            </li>
+        </ul>
+    </div>
+    <confirm></confirm>
+</div>

@@ -1,0 +1,17 @@
+ <header>
+     <div class="hea-left">
+         <h5>通用权限系统</h5>
+     </div>
+
+     <nav class="hea-right">
+         <ul>
+             <li ng-repeat="i in data">
+                     <a href="" ui-sref="{{i.route}}({self:i})" style="font-style: normal">
+                         {{i.name}}
+                     </a>
+
+             </li>
+         </ul>
+     </nav>
+
+ </header>

@@ -1,0 +1,13 @@
+<header class="header">
+    <div class="layout-header">
+        <nav id="nav" class="fl main-nav">
+            <ul class="navlist">
+                <li id="nav_@i" ng-repeat="i in data" >
+                    <a class="link" ui-sref="{{i.route}}">
+                        <span >{{i.name}}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

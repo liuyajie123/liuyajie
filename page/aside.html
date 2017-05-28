@@ -1,0 +1,11 @@
+ <aside>
+        <h3>我的工作台</h3>
+     <ul>
+         <li ng-repeat="i in data">
+             <a ui-sref="{{i.route}}({id:i.id})">
+                 {{i.name}}
+             </a>
+         </li>
+     </ul>
+ </aside>
+ <div ui-view></div>
